@@ -1,0 +1,13 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.0
+pydantic==2.8.0
+pydantic-settings==2.4.0
+pymongo==4.9.0
+python-dotenv==1.0.1
+twilio==9.3.0
+
+# Panchang Calculation Dependencies
+pyswisseph==2.10.3.2
+pytz==2024.1
+geopy==2.4.1
+timezonefinder==6.5.2
