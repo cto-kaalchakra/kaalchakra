@@ -40,23 +40,31 @@ class WhatsAppService:
     def send_message(self, to_number: str, message: str) -> bool:
         """
         Send WhatsApp message to a phone number
-        
+
         Args:
             to_number: Recipient phone number (with country code)
             message: Message text to send
-            
+
         Returns:
             True if message sent successfully, False otherwise
         """
         if not self.client:
             logger.error("WhatsApp client not initialized")
             return False
-        
+
         try:
-            # Ensure phone number has whatsapp: prefix
-            if not to_number.startswith("whatsapp:"):
-                to_number = f"whatsapp:{to_number}"
-            
+            # Clean up the phone number
+            # Remove whatsapp: prefix if present
+            if to_number.startswith("whatsapp:"):
+                to_number = to_number.replace("whatsapp:", "")
+
+            # Ensure phone number has + prefix for country code
+            if not to_number.startswith("+"):
+                to_number = f"+{to_number}"
+
+            # Add whatsapp: prefix
+            to_number = f"whatsapp:{to_number}"
+
             # Send message
             logger.info(f"Sending WhatsApp message to {to_number}")
             

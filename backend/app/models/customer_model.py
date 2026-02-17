@@ -32,29 +32,43 @@ class CustomerBase(BaseModel):
     """Base customer model with all fields"""
     name: str = Field(..., min_length=1, max_length=100)
     phone: str = Field(..., min_length=10, max_length=15)
-    
+
     # Birth details
     date_of_birth: date
     time_of_birth: time
     place_of_birth: str
-    birth_latitude: float
-    birth_longitude: float
-    birth_timezone: str
-    
+    birth_latitude: Optional[float] = None
+    birth_longitude: Optional[float] = None
+    birth_timezone: Optional[str] = None
+
     # Current location (optional, defaults to birth location)
     current_location: Optional[str] = None
     current_latitude: Optional[float] = None
     current_longitude: Optional[float] = None
-    
+
     # Astrological details (optional, can be calculated)
     zodiac_sign: Optional[str] = None
     moon_sign: Optional[str] = None
     nakshatra: Optional[str] = None
 
 
-class CustomerCreate(CustomerBase):
-    """Model for creating a new customer"""
-    pass
+class CustomerCreate(BaseModel):
+    """Model for creating a new customer - only requires user input fields"""
+    name: str = Field(..., min_length=1, max_length=100)
+    phone: str = Field(..., min_length=10, max_length=15)
+
+    # Birth details - only what user provides
+    date_of_birth: date
+    time_of_birth: time
+    place_of_birth: str
+
+    # Current location (optional)
+    current_location: Optional[str] = None
+
+    # Astrological details (optional)
+    zodiac_sign: Optional[str] = None
+    moon_sign: Optional[str] = None
+    nakshatra: Optional[str] = None
 
 
 class CustomerInDB(CustomerBase):

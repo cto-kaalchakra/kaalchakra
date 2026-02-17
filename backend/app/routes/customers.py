@@ -77,6 +77,13 @@ async def create_customer(customer: CustomerCreate):
         
         # Create customer document
         customer_dict = customer.model_dump()
+
+        # Convert date and time objects to strings for MongoDB
+        if "date_of_birth" in customer_dict and customer_dict["date_of_birth"]:
+            customer_dict["date_of_birth"] = customer_dict["date_of_birth"].isoformat()
+        if "time_of_birth" in customer_dict and customer_dict["time_of_birth"]:
+            customer_dict["time_of_birth"] = customer_dict["time_of_birth"].isoformat()
+
         customer_dict.update({
             "birth_latitude": birth_latitude,
             "birth_longitude": birth_longitude,
@@ -86,7 +93,7 @@ async def create_customer(customer: CustomerCreate):
             "created_at": datetime.utcnow(),
             "updated_at": datetime.utcnow()
         })
-        
+
         # Insert into database
         result = db.customers.insert_one(customer_dict)
         
