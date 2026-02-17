@@ -11,7 +11,7 @@ export default function PrivacyPage() {
       let current = '';
 
       sections.forEach(section => {
-        const sectionTop = section.offsetTop;
+        const sectionTop = (section as HTMLElement).offsetTop;
         if (window.pageYOffset >= sectionTop - 120) {
           current = section.getAttribute('id') || '';
         }

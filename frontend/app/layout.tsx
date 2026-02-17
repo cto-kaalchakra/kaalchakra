@@ -21,7 +21,6 @@ export const metadata: Metadata = {
   description: "Modern spiritual guidance for a meaningful life. Personalized insights delivered with care via WhatsApp.",
   icons: {
     icon: "/kaalchakra.svg",
-    appleIcon: "/kaalchakra.svg",
   },
 };
 
