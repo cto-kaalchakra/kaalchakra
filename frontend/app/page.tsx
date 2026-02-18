@@ -142,7 +142,7 @@ export default function Home() {
                   </li>
                 </ul>
               </div>
-              <Link href="/register">
+              <Link href="/register/basic">
                 <button className="w-full py-4 rounded-xl border-2 border-[#bc6231] text-[#bc6231] font-bold hover:bg-[#bc6231] hover:text-white transition-all">
                   Start Basic
                 </button>
@@ -180,7 +180,7 @@ export default function Home() {
                   </li>
                 </ul>
               </div>
-              <Link href="/register">
+              <Link href="/register/standard">
                 <button className="w-full py-4 rounded-xl bg-[#eca345] text-[#361e50] font-bold hover:shadow-lg transition-all">
                   Upgrade to Standard
                 </button>
@@ -215,7 +215,7 @@ export default function Home() {
                   </li>
                 </ul>
               </div>
-              <Link href="/register">
+              <Link href="/register/premium">
                 <button className="w-full py-4 rounded-xl border-2 border-[#f5d9ae] text-gray-700 dark:text-gray-700 font-bold hover:bg-[#f5d9ae] hover:text-[#361e50] transition-all">
                   Choose Premium
                 </button>
